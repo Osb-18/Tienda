@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase CRUD</title>
+
+    <!-- BOOTSWATCH -->
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/yeti/bootstrap.min.css"
+    />
+  </head>
+
+  <body class="bg-dark">
+    <!-- ADD TASK -->
+    <h1>Productos</h1>
+    
+    <section>
+        <form  id="form">
+            <label for="codigo">codigo</label>
+    <input type="text" name="codigo" id="codigo">
+    <br>
+    <label for="nombre">nombre</label>
+    <input type="text" name="nombre"   id="nombre">
+    <br>
+    <label for="precio" >precio</label>
+    <input type="text" name="precio"  id="precio">
+    
+    
+    <br>
+    <label for="cantidad">cantidad</label>
+    <input type="number" name="cantidad"  id="cantidad">
+    <br>
+    <label for="total">total</label>
+    <input type="text" name="total"   id="total">
+    <br>
+    <input type="submit" id="agregar" value="agregar" >
+    <br>
+    <button id="guardar">guardar</button>
+    <input type="reset" value="nueva suma" id="reset">
+    
+    
+        </form>
+    </section>
+    <section>
+      <h2 id="pagar"></h2>
+    </section>
+
+    <section>
+      <h2 id="pagar1"></h2>
+    </section>
+
+   
+
+    <!-- CUSTOM CODE -->
+    <script src="./index.js" type="module"></script>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+  </body>
+</html>
