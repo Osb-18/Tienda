@@ -1,11 +1,21 @@
 import { ajax } from "./ajax.js"
-import { saveTask ,getTask,updateTask,codigo,nombre,precio,cantidad, pagar,pagar1} from "./firabase.js"
+import { saveTask ,getTask,updateTask,codigo,nombre,precio,cantidad, pagar,pagar1, form,agregar, reset,NuevoP, total1,res} from "./firabase.js"
 import { prueba } from "./prueba.js"
 import { general } from "./prueba2.js"
 
+
+// const d={nombre:{apellido:"santamria"},name:{last:"osbert"}}
+// d.forEach(e=>{
+//     console.log(e)
+// })
+
 codigo.focus()
 
-form.addEventListener("submit",(e)=>{
+
+
+
+
+NuevoP.addEventListener("click",(e)=>{
     e.preventDefault()
     saveTask(codigo.value,nombre.value,precio.value,cantidad.value)
     form.codigo.value=""
@@ -13,7 +23,17 @@ form.addEventListener("submit",(e)=>{
     form.precio.value=""
     form.cantidad.value=""
     form.total.value=""
-    codigo.focus()
+})
+
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+     console.log("click")
+     
+
+    reset.focus()
+    
+   
   })
   
 
@@ -22,21 +42,21 @@ form.addEventListener("submit",(e)=>{
 
 // let cobrar=0
 
-let cantidades=[]
+
 let canti=0
 
-let sumatotal=0
 
+codigo.addEventListener("blur", async () => {
 
-codigo.addEventListener("input", async (e) => {
-
+ 
 agregar.dataset.ident=0
 const data = await getTask()
+
 console.log(data)
 data.forEach( element => {
 
 
-if (form.codigo.value.startsWith("234") && element.data().codigo.startsWith("234")) {
+if (form.codigo.value ==="7750106002615" && element.data().codigo ==="7750106002615") {
 
 canti++
 
@@ -46,80 +66,44 @@ ajax(canti,{element,data:element.data()})
 
 guardar.addEventListener("click",async (e)=>{
     e.preventDefault()
-    
-console.log(canti)
-   let edward= await prueba({id:agregar.dataset.ident,data:element.data(),codigo:"234576767",precio: 4,nombre: "galleta",cant:canti})
+
+   let edward= await prueba({id:agregar.dataset.ident,data:element.data(),codigo:"7750106002615",precio: 2.5,nombre: "rellenitas",cant:canti})
    console.log(edward)
-   
-
-//    if(pagar1.textContent==="") pagar1.textContent=edward
-//    else { pagar1.textContent+=`+ ${edward}`
-//                    }
-
-  
-
+//    pagar1.textContent=edward
+ 
     canti=0
 
 
 })
 
 
-
-
-
-
-
-
-
             }
     
     
-           
-
-
+        
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-             if (form.codigo.value.startsWith("55") && element.data().codigo.startsWith("55")) {
+  if (form.codigo.value ==="7613035196902" && element.data().codigo ==="7613035196902") {
               
-        canti++
-        ajax(canti,{element,data:element.data()})
+       canti++
+       ajax(canti,{element,data:element.data()})
 
-    guardar.addEventListener("click",async (e)=>{
-        e.preventDefault()
+   guardar.addEventListener("click",async (e)=>{
+       e.preventDefault()
 
-        let edward=await prueba({id:agregar.dataset.ident,data:element.data(),codigo:"55123444",precio: 1.5,nombre: "soda",cant:canti})
-        if(pagar1.textContent==="") pagar1.textContent=edward
-        else  pagar1.textContent+=`+ ${edward}`
+       let edward=await prueba({id:agregar.dataset.ident,data:element.data(),codigo:"7613035196902",precio: 1.5,nombre: "soda",cant:canti})
+    //    pagar.textContent=edward
  
-        canti=0
+       canti=0
 
-    })
+   })
 
 
 
             
                
                  
-             }
+          }
 
 
          
@@ -127,46 +111,40 @@ console.log(canti)
 
 
 
-             if (form.codigo.value.startsWith("56") && element.data().codigo.startsWith("56")) {
+    //          if (form.codigo.value.startsWith("56") && element.data().codigo.startsWith("56")) {
               
-                cant++
+    //             cant++
                
    
-                form.nombre.value = element.data().nombre
-               form.precio.value = element.data().precio
-               form.cantidad.value = cant
+    //             form.nombre.value = element.data().nombre
+    //            form.precio.value = element.data().precio
+    //            form.cantidad.value = cant
               
-               total=cant*element.data().precio
-               form.total.value = total
+    //            total=cant*element.data().precio
+    //            form.total.value = total
    
-               agregar.dataset.ident=element.id
+    //            agregar.dataset.ident=element.id
    
-                guardar.addEventListener("click",(e)=>{
-                   e.preventDefault()
-                   updateTask(agregar.dataset.ident,{
-                        cantidad:Number(element.data().cantidad)+cant,
-                        total:(Number(element.data().cantidad)+cant)*element.data().precio,
-                        codigo: "5678",
-                        precio: 3.5,
-                        nombre: "pera"})
-               })
+    //             guardar.addEventListener("click",(e)=>{
+    //                e.preventDefault()
+    //                updateTask(agregar.dataset.ident,{
+    //                     cantidad:Number(element.data().cantidad)+cant,
+    //                     total:(Number(element.data().cantidad)+cant)*element.data().precio,
+    //                     codigo: "5678",
+    //                     precio: 3.5,
+    //                     nombre: "pera"})
+    //            })
                 
-            }
+    //         }
 
 
 
+    else{
+  
+        return
+    }
 
 
-
-
-
-
-
-
-
-    
-    // console.log(total)
-    
         });
     
 
@@ -174,12 +152,30 @@ console.log(canti)
     
     })
     
-    
 
-    form.addEventListener("reset", () => {
-        canti = 0
-        let uno=pagar1.textContent.split("+")
-        console.log(uno)
-        console.log("reste")
+
+    form.addEventListener("reset", (e) => {
+
+        e.preventDefault()
+       
+        codigo.select()
+        form.codigo.value=codigo.value
+        codigo.focus()
+        reset.focus()
+       
+      
+        
     })
     
+    res.addEventListener("click",()=>{
+        form.codigo.value=""
+        form.nombre.value=""
+        form.precio.value=""
+        form.cantidad.value=""
+        form.total.value=""
+        codigo.focus()
+ canti = 0
+         console.log("reste")
+         
+
+    })

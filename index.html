@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase CRUD</title>
-
+<link rel="stylesheet" href="app.css">
     <!-- BOOTSWATCH -->
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://bootswatch.com/5/yeti/bootstrap.min.css"
-    />
+    /> -->
   </head>
 
   <body class="bg-dark">
@@ -17,29 +17,43 @@
     <h1>Productos</h1>
     
     <section>
+
+      
         <form  id="form">
+          <div class="formItem">
             <label for="codigo">codigo</label>
-    <input type="text" name="codigo" id="codigo">
-    <br>
+    <input type="text" name="codigo" autocomplete="off" minlength="12" maxlength="14" id="codigo">
+  </div>
+  <div class="formItem">
     <label for="nombre">nombre</label>
     <input type="text" name="nombre"   id="nombre">
-    <br>
+  </div>
+
+  <div class="formItem">
     <label for="precio" >precio</label>
     <input type="text" name="precio"  id="precio">
     
     
-    <br>
+  </div>
+
+  <div class="formItem">
     <label for="cantidad">cantidad</label>
     <input type="number" name="cantidad"  id="cantidad">
-    <br>
+  </div>
+  <div class="formItem">
     <label for="total">total</label>
     <input type="text" name="total"   id="total">
-    <br>
-    <input type="submit" id="agregar" value="agregar" >
-    <br>
+  </div>
+  <div class="formItem">
+    <input type="submit" id="agregar" hidden value="agregar" >
+  </div>
+  <div class="formItem" style="width: 30%;">
     <button id="guardar">guardar</button>
-    <input type="reset" value="nueva suma" id="reset">
-    
+    <input type="reset"  value="" id="reset">
+    <input type="reset" id="res" value="consultar">
+  </div>
+    <input type="submit" id="nuevoProducto" value="nuevo Producto" >
+  </div>
     
         </form>
     </section>

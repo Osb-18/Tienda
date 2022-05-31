@@ -18,12 +18,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db=getFirestore()
-
+export const NuevoP=document.getElementById("nuevoProducto")
 export const pagar1=document.getElementById("pagar1")
 export const form =document.getElementById("form")
 export const codigo = document.getElementById("codigo")
 export const agregar = document.getElementById("agregar")
 export const reset = document.getElementById("reset")
+export const res = document.getElementById("res")
 export const guardar = document.getElementById("guardar")
 export const total1 = document.getElementById("total")
 export const pagar = document.getElementById("pagar")
